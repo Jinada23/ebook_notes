@@ -15,7 +15,7 @@ os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'  # permite HTTP în loc de HTTPS
 # === OAuth config ===
 GOOGLE_CLIENT_SECRETS_FILE = "client_secret.json"
 SCOPES = ['https://www.googleapis.com/auth/drive.readonly']
-REDIRECT_URI = 'http://localhost:5000/oauth2callback'
+REDIRECT_URI = 'https://ebook-notes.onrender.com/oauth2callback'
 
 # === Route: Index ===
 @app.route('/')
