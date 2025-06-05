@@ -85,7 +85,7 @@ def list_files():
 
     creds = google_auth_from_session(session['credentials'])
     service = build('drive', 'v3', credentials=creds)
-    folder_id = find_folder_id(service, "Rakuten Kobo")
+    folder_id = find_folder_id(service, "Exported Notebooks")
     if not folder_id:
     	return "Folderul 'Rakuten Kobo' nu a fost găsit în Google Drive", 404
     results = service.files().list(
