@@ -76,11 +76,11 @@
       <div class="pdf-card text-center">
         <div class="pdf-title">
           <span>{{ file.name }}</span>
-          <a href="/pdf/{{ file.name | urlencode }}" class="btn-icon" download title="Descarcă PDF">💾</a>
+          <a href="/pdf/{{ file.filename | urlencode }}" class="btn-icon" download title="Descarcă PDF">💾</a>
         </div>
 
         {% for img in file.pages %}
-          <a href="/pdf/{{ file.name | urlencode }}" target="_blank">
+          <a href="/pdf/{{ file.filename | urlencode }}" target="_blank">
             <img src="{{ img }}" alt="pagina PDF" class="pdf-page">
           </a>
         {% endfor %}

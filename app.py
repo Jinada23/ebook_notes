@@ -132,6 +132,7 @@ def list_files():
 
         preview_data.append({
             'name': file['name'],
+	    'filename'; filename,
             'pages': image_paths
         })
 
