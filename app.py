@@ -95,6 +95,7 @@ def list_files():
     ).execute()
     files = results.get('files', [])
     preview_data = []
+    print(f"📂 Fișiere găsite în Drive: {len(files)}")
 
     for file in files:
         file_id = file['id']
