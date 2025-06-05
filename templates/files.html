@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Kobo Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    body {
+      background-color: #121212;
+      color: #f1f1f1;
+      padding-top: 2rem;
+      padding-bottom: 3rem;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .container {
+      max-width: 1100px;
+    }
+
+    .pdf-card {
+      background-color: #1e1e1e;
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 0 12px rgba(255,255,255,0.05);
+      border: 1px solid #333;
+    }
+
+    .pdf-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #eaeaea;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-icon {
+      font-size: 1.5rem;
+      background: transparent;
+      color: #ccc;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-icon:hover {
+      color: #fff;
+    }
+
+    .pdf-page {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease;
+    }
+
+    .pdf-page:hover {
+      transform: scale(1.01);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="mb-5 text-center">📄 Fișiere PDF convertite din Kobo</h1>
+
+    {% for file in files %}
+      <div class="pdf-card text-center">
+        <div class="pdf-title">
+          <span>{{ file.name }}</span>
+          <a href="/pdf/{{ file.name | urlencode }}" class="btn-icon" download title="Descarcă PDF">💾</a>
+        </div>
+
+        {% for img in file.pages %}
+          <a href="/pdf/{{ file.name | urlencode }}" target="_blank">
+            <img src="{{ img }}" alt="pagina PDF" class="pdf-page">
+          </a>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
