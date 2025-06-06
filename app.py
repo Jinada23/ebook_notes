@@ -103,7 +103,8 @@ def list_files():
         local_pdf_path = f"static/downloads/{filename}"
         output_folder = "static/previews"
         base_name = os.path.splitext(filename)[0]
-
+	file_size_bytes = os.path.getsize(local_pdf_path)
+	file_size_mb = round(file_size_bytes / (1024 * 1024), 1)
         # Descarcă PDF dacă nu există local
         if not os.path.exists(local_pdf_path):
             request = service.files().get_media(fileId=file_id)
@@ -133,7 +134,9 @@ def list_files():
         preview_data.append({
             'name': file['name'],
 	    'filename': filename,
-            'pages': image_paths
+            'pages': image_paths,
+	    'num_pages': len(image_paths),
+	    'file_size_mb': file_size_mb
         })
 
     return render_template("files.html", files=preview_data)
