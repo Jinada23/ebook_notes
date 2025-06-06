@@ -5,6 +5,7 @@ from googleapiclient.http import MediaIoBaseDownload
 from google.oauth2.credentials import Credentials
 from werkzeug.utils import secure_filename
 from pdf2image import convert_from_path
+from PyPDF2 import PdfReader
 import os
 
 # === Flask setup ===
@@ -113,6 +114,13 @@ def list_files():
                     status, done = downloader.next_chunk()
         file_size_bytes = os.path.getsize(local_pdf_path)
         file_size_mb = round(file_size_bytes / (1024 * 1024), 1)
+        # 🧠 Obține numărul total de pagini
+        try:
+            reader = PdfReader(local_pdf_path)
+            total_pages = len(reader.pages)
+        except Exception as e:
+            print("Eroare la citirea numărului de pagini:", e)
+            total_pages = 0
         # Verifică dacă imaginile există deja (caching)
         existing_images = [
             os.path.join(output_folder, f)
@@ -134,7 +142,7 @@ def list_files():
             'name': file['name'],
 	    'filename': filename,
             'pages': image_paths,
-	    'num_pages': len(image_paths),
+	    'num_pages': total_pages,
 	    'file_size_mb': file_size_mb
         })
 
