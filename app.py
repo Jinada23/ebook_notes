@@ -63,7 +63,7 @@ def convert_pdf_to_images(pdf_path, output_folder):
     from PIL import Image
     filename = os.path.splitext(os.path.basename(pdf_path))[0]
     try:
-        images = convert_from_path(pdf_path, dpi=125, first_page=1, last_page=3)
+        images = convert_from_path(pdf_path, dpi=125, first_page=1, last_page=1)
     except Exception as e:
         print(f"❌ Eroare conversie PDF: {e}")
         return []

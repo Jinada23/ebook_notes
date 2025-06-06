@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="ro">
 <head>
-    <title>Kobo Sync</title>
+  <meta charset="UTF-8">
+  <title>Kobo Sync - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root { color-scheme: dark; }
+
+    body {
+      background-color: #121212;
+      color: #f1f1f1;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-box {
+      text-align: center;
+      background-color: #1e1e1e;
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(255,255,255,0.05);
+    }
+
+    .login-box h1 {
+      margin-bottom: 2rem;
+      font-size: 1.7rem;
+    }
+
+    .login-btn {
+      font-size: 1.1rem;
+      padding: 0.75rem 2rem;
+      background-color: #4285F4;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      transition: background 0.3s;
+    }
+
+    .login-btn:hover {
+      background-color: #3367D6;
+      color: white;
+      text-decoration: none;
+    }
+
+    .login-btn:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(66,133,244,0.5);
+    }
+
+    .icon {
+      font-size: 1.3rem;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 <body>
-    <h1>Kobo Sync</h1>
-    <a href="/login">🔐 Conectează-te cu Google</a>
+  <div class="login-box">
+    <h1>📚 Kobo Sync</h1>
+    <a href="/login" class="login-btn">
+      <span class="icon">🔐</span> Conectează-te cu Google
+    </a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
